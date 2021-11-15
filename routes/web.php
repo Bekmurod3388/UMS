@@ -17,6 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+
+Auth::routes([
+    'confirm' => false,
+    'login' => true,
+    'logout' => true,
+    'register' => false,
+    'reset' => false,
+    'verify' => false
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
+    Route::resource('bus', BusController::class);
+    Route::resource('garage', \App\Http\Controllers\GarageController::class);
+    Route::resource('users', \App\Http\Controllers\UserController::class);
+    Route::resource('driver', \App\Http\Controllers\DriverController::class);
+});
