@@ -29,8 +29,7 @@ Auth::routes([
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
-    Route::resource('bus', BusController::class);
-    Route::resource('garage', \App\Http\Controllers\GarageController::class);
+    Route::resource('microcontrollers', \App\Http\Controllers\MicrocontrollerController::class);
+    Route::resource('sensors', \App\Http\Controllers\SensorController::class);
     Route::resource('users', \App\Http\Controllers\UserController::class);
-    Route::resource('driver', \App\Http\Controllers\DriverController::class);
 });

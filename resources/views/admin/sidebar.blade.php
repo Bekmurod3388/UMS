@@ -5,20 +5,20 @@
                 <li class="nav-item {{  request()->routeIs('admin.users.index') ? 'active' : '' }}">
                     <a href="{{route('admin.users.index')}}">
                         <i class="fas fa-user"></i>
-                        <p>Пользователь</p>
+                        <p>Фойдаланувчилар</p>
                     </a>
                 </li>
 
                 <li class="nav-item {{  request()->routeIs('admin.bus.index') ? 'active' : '' }}">
-                    <a href="{{route('admin.bus.index')}}">
-                        <i class="fas fa-bus"></i>
-                        <p>Автобусы</p>
+                    <a href="{{route('admin.microcontrollers.index')}}">
+                        <i class="fas fa-microchip"></i>
+                        <p>Контроллерлар</p>
                     </a>
                 </li>
                 <li class="nav-item {{  request()->routeIs('admin.driver.index') ? 'active' : '' }}">
-                    <a href="{{route('admin.driver.index')}}">
-                        <i class="fas fa-users"></i>
-                        <p>Водители</p>
+                    <a href="{{route('admin.sensors.index')}}">
+                        <i class="fas fa-memory"></i>
+                        <p>Сенсорлар</p>
                     </a>
                 </li>
 
