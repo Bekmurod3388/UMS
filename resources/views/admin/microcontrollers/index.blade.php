@@ -6,13 +6,13 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-9"><h1 class="card-title">Автобус</h1></div>
+                    <div class="col-9"><h1 class="card-title">Микроконтроллерлар</h1></div>
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-primary" onclick="createBus()">
+                        <button type="button" class="btn btn-primary" onclick="createMicro()">
                             <span class="btn-label">
                                 <i class="fa fa-plus"></i>
                             </span>
-                            Добавить Автобус
+                            Микроконтроллер қўшиш
                         </button>
                     </div>
                 </div>
@@ -22,28 +22,27 @@
                         <thead>
                         <tr>
                             <th scope="col">№</th>
-                            <th class="col-8" scope="col">Номер Автобус</th>
-                            <th style="width: auto" scope="col">Действие</th>
+                            <th class="col-8" scope="col">Микроконтроллер номи</th>
+                            <th class="col-8" scope="col">Сериал порт</th>
+                            <th class="col-8" scope="col">Порт</th>
+                            <th style="width: auto" scope="col">Амаллар</th>
                         </tr>
                         </thead>
-
                         <tbody>
-
-                        @foreach($busses as $bus)
+                        @foreach($micros as $micro)
                             <tr>
-                                <th scope="row" class="col-1">{{$bus->id}}</th>
-                                <td>{{$bus->number}}</td>
+                                <th scope="row" class="col-1">{{$micro->id}}</th>
+                                <td>{{$micro->name}}</td>
+                                <td>{{$micro->serialport}}</td>
+                                <td>{{$micro->port}}</td>
                                 <td>
-                                    <form action="{{route('admin.bus.destroy', ['bu' => $bus])}}" method="post"
-                                          id="form_{{$bus->id}}">
+                                    <form action="{{route('admin.microcontrollers.destroy', ['microcontroller' => $micro])}}" method="post"
+                                          id="form_{{$micro->id}}">
                                         @method('DELETE')
                                         @csrf
-                                        <button onclick="createBus('{{$bus->number}}', '{{route('admin.bus.update', ['bu' => $bus])}}')"
-                                                class="btn btn-warning" type="button" title="Изменить"><i class="fas fa-pencil-alt"></i>
-                                        </button>
 
                                         <button type="button" class="btn btn-danger" onclick="remove(this.parentNode)"
-                                                title="Удалить">
+                                                title="Ўчириш">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form>
@@ -58,22 +57,47 @@
     </div>
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form action="{{route('admin.bus.store')}}" method="post" id="firm">
+            <form action="{{route('admin.microcontrollers.store')}}" method="post" id="firm">
                 @csrf
                 <input type="hidden" name="_method" id="_method" value="POST">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Добавить Автобус</h5>
+                        <h5 class="modal-title" id="modalLabel">Микроконтроллер қўшиш</h5>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="number">№ Автобус</label>
-                            <input type="text" name="number" id="number" class="form-control" autocomplete="off">
+                            <label for="name">Микроконтроллерни танланг</label>
+                            <select class="custom-select" name = "name">
+                                <option>Arduino Uno</option>
+                                <option>ESP8266 Wemos D1</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="serialport">Сериал порт</label>
+                            <select class="custom-select" name = "serialport">
+                                <option>USB 9600</option>
+                                <option>WiFi</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="port">Порт</label>
+                            <select class="custom-select" name="port">
+                                <option>COM1</option>
+                                <option>COM2</option>
+                                <option>COM3</option>
+                                <option>COM4</option>
+                                <option>COM5</option>
+                                <option>COM6</option>
+                                <option>COM7</option>
+                                <option>COM8</option>
+                                <option>COM9</option>
+                            </select>
                         </div>
                     </div>
+
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-primary">Сақлаш</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Бекор қилиш</button>
                     </div>
                 </div>
             </form>
@@ -90,36 +114,32 @@
             })
         });
 
-        function createBus(val = '', action = '') {
+        function createMicro(val = '', action = '') {
             let form = $('#firm')
             let method = $('#_method')
             if (val === '') {
-                form.attr('action', "{{route('admin.bus.store')}}")
+                form.attr('action', "{{route('admin.microcontrollers.store')}}")
                 $('#number').val('')
                 // method.val("POST")
-            } else {
-                method.val("PUT")
-                form.attr('action', action)
-                $('#number').val(val)
             }
 
             $('#modal').modal()
         }
         function remove(form) {
             Swal.fire({
-                title: 'Точно хотите?',
-                text: "После удаление всех данные будет потеряны",
+                title: 'Аниқ ўчиришни хоҳлайсизми?',
+                text: "Маълумотларни ўчиргандан кейин қайта тиклай олмайсиз!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#dd3333',
                 cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Да',
-                cancelButtonText: 'Нет'
+                confirmButtonText: 'Ха}',
+                cancelButtonText: 'Йўқ'
             }).then((result) => {
                 if (result.isConfirmed) {
                     form.submit();
                     Swal.fire({
-                        title: 'Успешно удалено!',
+                        title: 'Муваффақиятли ўчирилди!',
                         icon: 'success',
                         showConfirmButton: false,
                     });

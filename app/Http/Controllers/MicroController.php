@@ -14,8 +14,8 @@ class MicroController extends Controller
      */
     public function index()
     {
-        $microcontrollers = Micro::first();
-        return view('admin.microcontrollers.index',['microcontrollers'=>$microcontrollers]);
+        $micros = Micro::all();
+        return view('admin.microcontrollers.index',['micros'=>$micros]);
     }
 
     /**
@@ -36,7 +36,11 @@ class MicroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $micro = new Micro();
+        $micro->fill($request->all());
+        $micro->save();
+        return redirect()->back()->with('success','Муваффақиятли яратилди');
     }
 
     /**
@@ -79,8 +83,9 @@ class MicroController extends Controller
      * @param  \App\Models\Micro  $microcontroller
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Microcontroller $microcontroller)
+    public function destroy(Micro $microcontroller)
     {
-        //
+        $microcontroller->delete();
+        return redirect()->back()->with('success','Муваффақиятли ўчирилди!');
     }
 }
