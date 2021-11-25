@@ -14,7 +14,7 @@ class MicroController extends Controller
      */
     public function index()
     {
-        $microcontrollers = Microcontroller::all();
+        $microcontrollers = Micro::first();
         return view('admin.microcontrollers.index',['microcontrollers'=>$microcontrollers]);
     }
 

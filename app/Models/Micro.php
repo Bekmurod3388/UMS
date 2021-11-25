@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Micro extends Model
 {
     use HasFactory;
+    protected $fillable = ['name','serialport','port'];
+    protected $table = 'microcontrollers';
 }
