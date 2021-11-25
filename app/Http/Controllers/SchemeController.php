@@ -23,13 +23,14 @@ class SchemeController extends Controller {
 
     public function store(Request $request) {
         Scheme::query()->create($request->all());
-
-        $this->up();
+        $controller = Micro::findOrFail($request->get('controller_id'));
+        $sensor = Sensor::findOrFail($request->get('sensor_id'));
+        $this->up($controller->name,$sensor->name);
         return redirect()->back();
     }
 
-    public function up() {
-        Schema::create('sensor_temp', function (Blueprint $table) {
+    public function up($controller, $sensor) {
+        Schema::create($controller . '_' . $sensor, function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });

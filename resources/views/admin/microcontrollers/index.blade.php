@@ -1,7 +1,6 @@
 @extends('admin.master')
 
 @section('content')
-
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -36,8 +35,10 @@
                                 <td>{{$micro->serialport}}</td>
                                 <td>{{$micro->port}}</td>
                                 <td>
-                                    <form action="{{route('admin.microcontrollers.destroy', ['microcontroller' => $micro])}}" method="post"
-                                          id="form_{{$micro->id}}">
+                                    <form
+                                        action="{{route('admin.microcontrollers.destroy', ['microcontroller' => $micro])}}"
+                                        method="post"
+                                        id="form_{{$micro->id}}">
                                         @method('DELETE')
                                         @csrf
 
@@ -67,14 +68,14 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Микроконтроллерни танланг</label>
-                            <select class="custom-select" name = "name">
+                            <select class="custom-select" name="name">
                                 <option>Arduino Uno</option>
                                 <option>ESP8266 Wemos D1</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="serialport">Сериал порт</label>
-                            <select class="custom-select" name = "serialport">
+                            <select class="custom-select" name="serialport">
                                 <option>USB 9600</option>
                                 <option>WiFi</option>
                             </select>
@@ -110,7 +111,7 @@
         $('#table_search').keyup(function () {
             let qiymat = this.value.toLowerCase();
             $('tbody tr').filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(qiymat) > - 1)
+                $(this).toggle($(this).text().toLowerCase().indexOf(qiymat) > -1)
             })
         });
 
@@ -125,6 +126,7 @@
 
             $('#modal').modal()
         }
+
         function remove(form) {
             Swal.fire({
                 title: 'Аниқ ўчиришни хоҳлайсизми?',
