@@ -1,10 +1,6 @@
 <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-
     <div class="container-fluid">
-
         <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-
-
             <li class="nav-item dropdown hidden-caret">
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                     <div class="avatar-sm">
@@ -15,9 +11,10 @@
                     <div class="dropdown-user-scroll scrollbar-outer">
                         <li>
                             <div class="user-box">
-                                <div class="avatar-lg"><img src="{{asset('/img/user.png')}}" alt="image profile" class="avatar-img rounded"></div>
+                                <div class="avatar-lg"><img src="{{asset('/img/user.png')}}" alt="image profile"
+                                                            class="avatar-img rounded"></div>
                                 <div class="u-text">
-                                    <h4>{{Auth::user()->name}}</h4>
+                                    <h4>{{auth()->user()->name}}</h4>
 
                                 </div>
                             </div>

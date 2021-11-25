@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Scheme;
-use App\Models\Sensor;
-use App\Models\Micro;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
-
-;
+use App\Models\Scheme;
+use App\Models\Sensor;
+use App\Models\Micro;
 
 class SchemeController extends Controller {
 
@@ -23,20 +21,25 @@ class SchemeController extends Controller {
 
     public function store(Request $request) {
         Scheme::query()->create($request->all());
-        $controller = Micro::findOrFail($request->get('controller_id'));
-        $sensor = Sensor::findOrFail($request->get('sensor_id'));
-        $this->up($controller->name,$sensor->name);
+        $controller = Micro::query()->findOrFail($request->get('controller_id'));
+        $sensor = Sensor::query()->findOrFail($request->get('sensor_id'));
+
+        $this->up($this->Stringify($controller->name, $sensor->name));
         return redirect()->back();
     }
 
-    public function up($controller, $sensor) {
-        Schema::create($controller . '_' . $sensor, function (Blueprint $table) {
+    public function up($name) {
+        Schema::create($name, function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
     }
 
-    public function down() {
-        Schema::dropIfExists('schemes');
+    public function down($name) {
+        Schema::dropIfExists($name);
+    }
+
+    private function Stringify($c_name, $s_name) {
+        return strtolower(str_replace(' ', '', $c_name) . '_' . str_replace(' ', '', $s_name));
     }
 }
