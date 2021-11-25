@@ -10,11 +10,12 @@ class SensorController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('admin.sensors.index', [
+            'sensors' => Sensor::all()
+        ]);
     }
 
     /**
@@ -27,15 +28,15 @@ class SensorController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $data = $request->validate(['name' => 'required', 'type' => 'required']);
+        $sensor = new Sensor();
+        $sensor->fill($data);
+        $sensor->save();
+
+        return redirect()->route('admin.sensors.index');
     }
 
     /**
@@ -72,14 +73,10 @@ class SensorController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Sensor  $sensor
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Sensor $sensor)
     {
-        //
+        $sensor->delete();
+        return redirect()->back();
     }
 }
