@@ -6,13 +6,13 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-9"><h1 class="card-title">Водитель</h1></div>
+                    <div class="col-9"><h1 class="card-title">Сенсорлар</h1></div>
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-primary" onclick="createBus()">
+                        <button type="button" class="btn btn-primary" onclick="createSensor()">
                             <span class="btn-label">
                                 <i class="fa fa-plus"></i>
                             </span>
-                            Добавить Водитель
+                            Сенсор қўшиш
                         </button>
                     </div>
                 </div>
@@ -22,27 +22,26 @@
                         <thead>
                         <tr>
                             <th scope="col">№</th>
-                            <th class="col-2" scope="col">Номер Автобус</th>
-                            <th class="col-6" scope="col">Имя водителя</th>
-                            <th style="width: auto" scope="col">Действие</th>
+                            <th class="col-2" scope="col">Номи</th>
+                            <th class="col-6" scope="col">Тури</th>
+                            <th style="width: auto" scope="col">Амаллар</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        @foreach($drivers as $driver)
+                        @foreach($sensors as $sensor)
                             <tr>
-                                <th scope="row" class="col-1">{{$driver->id}}</th>
-                                <td>{{$driver->bus->number}}</td>
-                                <td>{{$driver->name}}</td>
+                                <th scope="row" class="col-1">{{$sensor->id}}</th>
+                                <td>{{$sensor->name}}</td>
+                                <td>{{$sensor->type}}</td>
                                 <td>
-                                    <form action="{{route('admin.driver.destroy', ['driver' => $driver])}}" method="post"
-                                          id="form_{{$driver->id}}">
+                                    <form action="{{route('admin.sensors.destroy', ['sensor' => $sensor])}}" method="post"
+                                          id="form_{{$sensor->id}}">
                                         @method('DELETE')
                                         @csrf
-                                        <button onclick="createBus('{{$driver->name}}', '{{route('admin.driver.update', ['driver' => $driver])}}')"
+                                        <button onclick="createSensor('{{$sensor->name}}', '{{route('admin.sensors.update', ['sensor' => $sensor])}}')"
                                                 class="btn btn-warning" type="button" title="Изменить"><i class="fas fa-pencil-alt"></i>
                                         </button>
-
                                         <button type="button" class="btn btn-danger" onclick="remove(this.parentNode)"
                                                 title="Удалить">
                                             <i class="fas fa-trash-alt"></i>
@@ -59,7 +58,7 @@
     </div>
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form action="{{route('admin.driver.store')}}" method="post" id="firm">
+            <form action="{{route('admin.sensors.store')}}" method="post" id="firm">
                 @csrf
                 <input type="hidden" name="_method" id="_method" value="POST">
                 <div class="modal-content">
@@ -68,22 +67,23 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="number">№ Автобус</label>
-                            <select class="custom-select">
-
-                                @foreach($busses as $bus)
-                                <option>{{$bus->number}}</option>
-                                @endforeach
+                            <label for="name">Номи</label>
+                            <select name="name" id="name" class="custom-select">
+                                <option value="Температура">Температура</option>
                             </select>
+{{--                            <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>--}}
                         </div>
                         <div class="form-group">
-                            <label for="number">Имя Водителя</label>
-                            <input type="text" name="number" id="number" class="form-control" autocomplete="off">
+                            <label for="type">Тури</label>
+                            <select name="type" id="type" class="custom-select">
+                                <option value="DHT">DHT</option>
+                            </select>
+{{--                            <input type="text" name="type" id="type" class="form-control" autocomplete="off" required>--}}
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-primary">Сақлаш</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Бекор қилиш</button>
                     </div>
                 </div>
             </form>
@@ -100,11 +100,11 @@
             })
         });
 
-        function createBus(val = '', action = '') {
+        function createSensor(val = '', action = '') {
             let form = $('#firm')
             let method = $('#_method')
             if (val === '') {
-                form.attr('action', "{{route('admin.driver.store')}}")
+                form.attr('action', "{{route('admin.sensors.store')}}")
                 $('#number').val('')
                 // method.val("POST")
             } else {
