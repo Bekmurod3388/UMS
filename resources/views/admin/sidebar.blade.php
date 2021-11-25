@@ -21,11 +21,13 @@
                         <p>Сенсорлар</p>
                     </a>
                 </li>
-
-
+                <li class="nav-item {{  request()->routeIs('admin.driver.index') ? 'active' : '' }}">
+                    <a href="{{route('admin.scheme.index')}}">
+                        <i class="fas fa-database"></i>
+                        <p>Схемалар</p>
+                    </a>
+                </li>
             </ul>
-
-
         </div>
     </div>
 </div>
