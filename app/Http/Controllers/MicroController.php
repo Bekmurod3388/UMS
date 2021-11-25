@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Microcontroller;
+use App\Models\Micro;
 use Illuminate\Http\Request;
 
-class MicrocontrollerController extends Controller
+class MicroController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,7 +42,7 @@ class MicrocontrollerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Microcontroller  $microcontroller
+     * @param  \App\Models\Micro  $microcontroller
      * @return \Illuminate\Http\Response
      */
     public function show(Microcontroller $microcontroller)
@@ -53,7 +53,7 @@ class MicrocontrollerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Microcontroller  $microcontroller
+     * @param  \App\Models\Micro  $microcontroller
      * @return \Illuminate\Http\Response
      */
     public function edit(Microcontroller $microcontroller)
@@ -65,7 +65,7 @@ class MicrocontrollerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Microcontroller  $microcontroller
+     * @param  \App\Models\Micro  $microcontroller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Microcontroller $microcontroller)
@@ -76,7 +76,7 @@ class MicrocontrollerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Microcontroller  $microcontroller
+     * @param  \App\Models\Micro  $microcontroller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Microcontroller $microcontroller)
