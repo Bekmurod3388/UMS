@@ -9,7 +9,6 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
-;
 
 class SchemeController extends Controller {
 
@@ -28,12 +27,12 @@ class SchemeController extends Controller {
         Scheme::query()->create($data);
         $controller = Micro::findOrFail($data['controller_id']);
         $sensor = Sensor::findOrFail($data['sensor_id']);
-        $this->up($controller->name,$sensor->name);
+        $this->up($this->Stringify($controller->name,$sensor->name));
         return redirect()->back();
     }
 
-    public function up($controller, $sensor) {
-        Schema::create($controller . '_' . $sensor, function (Blueprint $table) {
+    public function up($name) {
+        Schema::create($name, function (Blueprint $table) {
             $table->id();
             $table->decimal('humidity', $precision = 5, $scale = 2);
             $table->decimal('temperature', $precision = 5, $scale = 2);
@@ -41,8 +40,12 @@ class SchemeController extends Controller {
         });
     }
 
-    public function down() {
-        Schema::dropIfExists('schemes');
+    public function down($name) {
+        Schema::dropIfExists($name);
+    }
+
+    private function Stringify($c_name, $s_name) {
+        return strtolower(str_replace(' ', '', $c_name) . '_' . str_replace(' ', '', $s_name));
     }
 
     public function insert_data(Request $request)
