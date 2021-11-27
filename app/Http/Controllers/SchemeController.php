@@ -20,11 +20,14 @@ class SchemeController extends Controller {
             'sensors' => Sensor::all(),
         ]);
     }
-
     public function store(Request $request) {
-        Scheme::query()->create($request->all());
-        $controller = Micro::findOrFail($request->get('controller_id'));
-        $sensor = Sensor::findOrFail($request->get('sensor_id'));
+        $data = $request->validate([
+            'controller_id' => 'required',
+            'sensor_id' => 'required'
+        ]);
+        Scheme::query()->create($data);
+        $controller = Micro::findOrFail($data['controller_id']);
+        $sensor = Sensor::findOrFail($data['sensor_id']);
         $this->up($controller->name,$sensor->name);
         return redirect()->back();
     }
@@ -32,11 +35,18 @@ class SchemeController extends Controller {
     public function up($controller, $sensor) {
         Schema::create($controller . '_' . $sensor, function (Blueprint $table) {
             $table->id();
+            $table->decimal('humidity', $precision = 5, $scale = 2);
+            $table->decimal('temperature', $precision = 5, $scale = 2);
             $table->timestamps();
         });
     }
 
     public function down() {
         Schema::dropIfExists('schemes');
+    }
+
+    public function insert_data(Request $request)
+    {
+        return response()->json($request->all());
     }
 }

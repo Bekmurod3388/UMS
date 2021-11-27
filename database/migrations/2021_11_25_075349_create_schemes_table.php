@@ -13,6 +13,8 @@ class CreateSchemesTable extends Migration {
     public function up() {
         Schema::create('schemes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('controller_id');
+            $table->unsignedBigInteger('sensor_id');
             $table->timestamps();
         });
     }
