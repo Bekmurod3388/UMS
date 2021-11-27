@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dynamic;
 use App\Models\Scheme;
 use App\Models\Sensor;
 use App\Models\Micro;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\DB;
 
 class SchemeController extends Controller {
 
@@ -24,6 +25,8 @@ class SchemeController extends Controller {
             'controller_id' => 'required',
             'sensor_id' => 'required'
         ]);
+
+
         Scheme::query()->create($data);
         $controller = Micro::findOrFail($data['controller_id']);
         $sensor = Sensor::findOrFail($data['sensor_id']);
@@ -45,11 +48,16 @@ class SchemeController extends Controller {
     }
 
     private function Stringify($c_name, $s_name) {
+//        new Dynamic('12')
         return strtolower(str_replace(' ', '', $c_name) . '_' . str_replace(' ', '', $s_name));
     }
 
     public function insert_data(Request $request)
     {
-        return response()->json($request->all());
+        $data = $request->all();
+        $data['created_at'] = now();
+        $data['updated_at'] = now();
+        DB::table('arduinouno_температура')->insert($data);
+        return response()->json('success');
     }
 }
