@@ -35,5 +35,5 @@ void loop(){
     Serial.print(DHT.temperature);
     Serial.println("}"); // C
 
-    delay(5000); // 5 soniyadan takrorlanadi.
+    delay(1000); // 5 soniyadan takrorlanadi.
 }

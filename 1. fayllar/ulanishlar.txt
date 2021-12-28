@@ -1,0 +1,4 @@
+/* DHT11 */
+    Musbat (+) -> O'rtaga
+    Manfiy (-) -> -
+    Analog (*) -> S

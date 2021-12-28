@@ -1,0 +1,4 @@
+1. Oq R9(raqamli 9)
+2. Qarshilikni manfiy musbat (+/-) tomonlari yo'q
+3. R9 qarshilikni musbat tomaniga ulanadi
+4. A9 qarshlik va fotorezistor o'ratsiga ulanadi
