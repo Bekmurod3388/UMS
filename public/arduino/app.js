@@ -2,7 +2,7 @@ var SerialPort = require('serialport');
 var http = require('http');
 var fs = require('fs');
 
-var index = fs.readFileSync('index1.html');
+var index = fs.readFileSync('index.html');
 
 const parser = new SerialPort.parsers.Readline({
     delimiter: '\r\n'
