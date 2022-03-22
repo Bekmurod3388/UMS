@@ -6,14 +6,14 @@ dht DHT;
 /* Asosiy parametrlar */
 int serial_port = 9600;
 
-void setup(){
+void setup() {
   Serial.begin(serial_port);
   delay(500); // Delay to let system boot
   Serial.println("DHT11 ishga tushdi (namlik, harorat)\n\n");
   delay(1000); // Ishni boshlash uchun kutish vaqti
 }//end "setup()"
 
-void loop(){
+void loop() {
    // Dasturning ishchi qismi
 
     DHT.read11(dht_apin);

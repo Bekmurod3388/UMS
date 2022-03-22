@@ -11,6 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 class Micro extends Model {
     use HasFactory;
 
-    protected $fillable = ['name', 'serialport', 'port'];
+    protected $fillable = ['name', 'serialport', 'port', 'serial_number'];
     protected $table = 'microcontrollers';
 }

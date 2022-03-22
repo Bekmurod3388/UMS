@@ -11,17 +11,16 @@
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
-                            <strong>Ой!</strong> С вашим вводом возникли некоторые проблемы.<br><br>
+                            <strong>Ой!</strong>С вашим вводом возникли некоторые проблемы.<br><br>
                             <ul>
-                                @foreach ($errors->all() as $error)
+                                @foreach($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>
                     @endif
 
-
-                    <form action="{{route('admin.users.update',$user)}}" method="POST" accept-charset="UTF-8">
+                    <form action="{{route('admin.users.update', $user)}}" method="POST" accept-charset="UTF-8">
                         @csrf
                         @method('PUT')
                     <div class="form-group">
@@ -29,7 +28,7 @@
                         <input type="text" name="name" class="form-control" id="name" placeholder="Имя" value="{{$user->name}}">
                     </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Е-почта</label>
                             <input type="text" name="email" class="form-control" id="email" placeholder="Email" value="{{$user->email}}">
                         </div>
                     <div class="form-group">
@@ -47,5 +46,4 @@
             </div>
         </div>
     </div>
-
 @endsection

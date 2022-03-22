@@ -77,7 +77,7 @@
                             <label for="sensor_id">Sensorlar</label>
                             <select name="sensor_id" id="sensor_id" class="form-control" required>
                                 @foreach($sensors as $sensor)
-                                    <option value="{{$sensor->id}}">{{$sensor->name}}</option>
+                                    <option value="{{$sensor->id}}">{{$sensor->name}} ({{$sensor->type}}, )</option>
                                 @endforeach
                             </select>
                         </div>

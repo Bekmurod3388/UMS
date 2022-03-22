@@ -28,4 +28,4 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
 });
 
 Route::get('/mqtt', [App\Http\Controllers\MQTTController::class, 'index']);
-Route::get('/server', [App\Http\Controllers\MQTTController::class, 'serveer']);
+Route::get('/server', [App\Http\Controllers\MQTTController::class, 'server']);

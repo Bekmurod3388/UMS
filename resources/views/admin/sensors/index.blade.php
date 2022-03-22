@@ -68,17 +68,15 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Номи</label>
-                            <select name="name" id="name" class="custom-select">
-                                <option value="Температура">Температура</option>
-                            </select>
-{{--                            <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>--}}
+                            <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="form-group">
-                            <label for="type">Тури</label>
-                            <select name="type" id="type" class="custom-select">
-                                <option value="DHT">DHT</option>
-                            </select>
-{{--                            <input type="text" name="type" id="type" class="form-control" autocomplete="off" required>--}}
+                            <label for="type">Тури (Модел)</label>
+                            <input type="text" name="type" id="type" class="form-control" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Tavsif</label>
+                            <input type="text" name="description" id="description" class="form-control" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="modal-footer">
