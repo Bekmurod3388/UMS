@@ -68,12 +68,12 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Номи</label>
-                            <input type="text" name="name" class="form-control" value="{{$parameter->name}}">
+                            <input type="text" name="name" class="form-control"  autocomplete="off" required>
 {{--                            <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>--}}
                         </div>
                         <div class="form-group">
                             <label for="type">Киймати</label>
-                            <input type="text" name="value" class="form-control" value="{{$parameter->value}}">
+                            <input type="text" name="value" class="form-control"  autocomplete="off" required>
 {{--                            <input type="text" name="type" id="type" class="form-control" autocomplete="off" required>--}}
                         </div>
                     </div>
