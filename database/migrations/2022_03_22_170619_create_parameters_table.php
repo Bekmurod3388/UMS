@@ -16,8 +16,8 @@ class CreateParametersTable extends Migration {
             $table->string('name');
             $table->string('value');
             $table->foreignId('sensor_id')
-                ->constrained('sensors');
-
+                ->constrained('sensors')
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }
