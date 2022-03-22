@@ -19,12 +19,12 @@
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
-                        <tr>
-                            <th scope="col">№</th>
-                            <th class="col-2" scope="col">Номи</th>
-                            <th class="col-6" scope="col">Тури</th>
-                            <th style="width: auto" scope="col">Амаллар</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">№</th>
+                                <th class="col-2" scope="col">Номи</th>
+                                <th class="col-5" scope="col">Тури</th>
+                                <th style="width: auto" scope="col">Амаллар</th>
+                            </tr>
                         </thead>
 
                         <tbody>
@@ -45,6 +45,10 @@
                                                 title="Удалить">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
+                                        <a href="{{route('admin.parameters.index', ['sensor' => $sensor->id])}}" class="btn btn-info" onclick="remove(this.parentNode)"
+                                                title="Удалить">
+                                            <i class="fas fa-bars"></i>
+                                        </a>
                                     </form>
                                 </td>
                             </tr>

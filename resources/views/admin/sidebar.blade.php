@@ -9,25 +9,19 @@
                     </a>
                 </li>
 
-                <li class="nav-item {{  request()->routeIs('admin.bus.index') ? 'active' : '' }}">
+                <li class="nav-item {{  request()->routeIs('admin.microcontrollers.index') ? 'active' : '' }}">
                     <a href="{{route('admin.microcontrollers.index')}}">
                         <i class="fas fa-microchip"></i>
                         <p>Контроллерлар</p>
                     </a>
                 </li>
-                <li class="nav-item {{  request()->routeIs('admin.driver.index') ? 'active' : '' }}">
+                <li class="nav-item {{  request()->routeIs('admin.sensors.index') ? 'active' : '' }}">
                     <a href="{{route('admin.sensors.index')}}">
                         <i class="fas fa-memory"></i>
                         <p>Сенсорлар</p>
                     </a>
                 </li>
-                <li class="nav-item {{  request()->routeIs('admin.parameters.index') ? 'active' : '' }}">
-                    <a href="{{route('admin.parameters.index')}}">
-                        <i class="fas fa-memory"></i>
-                        <p>Параметрлар</p>
-                    </a>
-                </li>
-                <li class="nav-item {{  request()->routeIs('admin.driver.index') ? 'active' : '' }}">
+                <li class="nav-item {{  request()->routeIs('admin.scheme.index') ? 'active' : '' }}">
                     <a href="{{route('admin.scheme.index')}}">
                         <i class="fas fa-database"></i>
                         <p>Схемалар</p>

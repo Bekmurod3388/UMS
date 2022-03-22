@@ -1,7 +1,6 @@
 @extends('admin.master')
 
 @section('content')
-
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -29,7 +28,7 @@
                         </thead>
 
                         <tbody>
-                        @foreach($parameters as $parameter)
+                        @foreach($models as $parameter)
                             <tr>
                                 <th scope="row" class="col-1">{{$parameter->id}}</th>
                                 <td>{{$parameter->name}}</td>
@@ -69,13 +68,12 @@
                         <div class="form-group">
                             <label for="name">Номи</label>
                             <input type="text" name="name" class="form-control"  autocomplete="off" required>
-{{--                            <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>--}}
                         </div>
                         <div class="form-group">
                             <label for="type">Киймати</label>
                             <input type="text" name="value" class="form-control"  autocomplete="off" required>
-{{--                            <input type="text" name="type" id="type" class="form-control" autocomplete="off" required>--}}
                         </div>
+                        <input type="hidden" name="sensor_id" value="{{request()->get('sensor')}}">
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Сақлаш</button>
