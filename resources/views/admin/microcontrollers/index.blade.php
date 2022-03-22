@@ -81,6 +81,10 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="serial_number">Махсус ракам</label>
+                            <input type="number" name="serial_number" id="serial_number" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label for="port">Порт</label>
                             <select class="custom-select" name="port">
                                 <option>COM1</option>
@@ -135,7 +139,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#dd3333',
                 cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Ха}',
+                confirmButtonText: 'Ха',
                 cancelButtonText: 'Йўқ'
             }).then((result) => {
                 if (result.isConfirmed) {

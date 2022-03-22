@@ -1,7 +1,6 @@
 @extends('admin.master')
 
 @section('content')
-
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -63,7 +62,7 @@
                 <input type="hidden" name="_method" id="_method" value="POST">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Добавить Водитель</h5>
+                        <h5 class="modal-title" id="modalLabel">Сенсор қўшиш</h5>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -75,8 +74,8 @@
                             <input type="text" name="type" id="type" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="form-group">
-                            <label for="description">Tavsif</label>
-                            <input type="text" name="description" id="description" class="form-control" autocomplete="off" required>
+                            <label for="description">Тавсиф</label>
+                            <input type="text" name="description" id="description" class="form-control" autocomplete="off">
                         </div>
                     </div>
                     <div class="modal-footer">
