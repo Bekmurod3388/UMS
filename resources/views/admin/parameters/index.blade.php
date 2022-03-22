@@ -33,7 +33,7 @@
                             <tr>
                                 <th scope="row" class="col-1">{{$parameter->id}}</th>
                                 <td>{{$parameter->name}}</td>
-                                <td>{{$parameter->type}}</td>
+                                <td>{{$parameter->value}}</td>
                                 <td>
                                     <form action="{{route('admin.parameters.destroy', ['parameter' => $parameter])}}" method="post"
                                           id="form_{{$parameter->id}}">
