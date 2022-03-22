@@ -21,6 +21,12 @@
                         <p>Сенсорлар</p>
                     </a>
                 </li>
+                <li class="nav-item {{  request()->routeIs('admin.parameters.index') ? 'active' : '' }}">
+                    <a href="{{route('admin.parameters.index')}}">
+                        <i class="fas fa-memory"></i>
+                        <p>Параметрлар</p>
+                    </a>
+                </li>
                 <li class="nav-item {{  request()->routeIs('admin.driver.index') ? 'active' : '' }}">
                     <a href="{{route('admin.scheme.index')}}">
                         <i class="fas fa-database"></i>

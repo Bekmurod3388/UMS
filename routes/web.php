@@ -25,6 +25,7 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('sensors', App\Http\Controllers\SensorController::class);
     Route::resource('users', App\Http\Controllers\UserController::class);
     Route::resource('scheme', App\Http\Controllers\SchemeController::class);
+    Route::resource('parameters', App\Http\Controllers\ParameterController::class);
 });
 
 Route::get('/mqtt', [App\Http\Controllers\MQTTController::class, 'index']);
