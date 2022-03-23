@@ -68,21 +68,15 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Микроконтроллерни танланг</label>
-                            <select class="custom-select" name="name">
-                                <option>Arduino Uno</option>
-                                <option>ESP8266 Wemos D1</option>
-                            </select>
+                            <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="form-group">
                             <label for="serialport">Сериал порт</label>
-                            <select class="custom-select" name="serialport">
-                                <option>USB 9600</option>
-                                <option>WiFi</option>
-                            </select>
+                            <input type="text" name="serialport" id="serialport" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="form-group">
                             <label for="serial_number">Махсус ракам</label>
-                            <input type="number" name="serial_number" id="serial_number" class="form-control">
+                            <input type="text" name="serial_number" id="serial_number" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="port">Порт</label>

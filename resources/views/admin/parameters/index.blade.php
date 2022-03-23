@@ -62,7 +62,7 @@
                 <input type="hidden" name="_method" id="_method" value="POST">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Добавить Водитель</h5>
+                        <h5 class="modal-title" id="modalLabel">Параметер кушиш</h5>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">

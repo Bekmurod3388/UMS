@@ -39,14 +39,15 @@
                                         @method('DELETE')
                                         @csrf
                                         <button onclick="createSensor('{{$sensor->name}}', '{{route('admin.sensors.update', ['sensor' => $sensor])}}')"
-                                                class="btn btn-warning" type="button" title="Изменить"><i class="fas fa-pencil-alt"></i>
+                                                class="btn btn-warning" type="button" title="Узгартириш">
+                                            <i class="fas fa-pencil-alt"></i>
                                         </button>
                                         <button type="button" class="btn btn-danger" onclick="remove(this.parentNode)"
-                                                title="Удалить">
+                                                title="Учириш">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
-                                        <a href="{{route('admin.parameters.index', ['sensor' => $sensor->id])}}" class="btn btn-info" onclick="remove(this.parentNode)"
-                                                title="Удалить">
+                                        <a href="{{route('admin.parameters.index', ['sensor' => $sensor->id])}}" class="btn btn-info"
+                                                title="Сенсор параметерлари">
                                             <i class="fas fa-bars"></i>
                                         </a>
                                     </form>
