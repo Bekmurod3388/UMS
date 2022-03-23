@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{{$scheme->id}}</td>
                                 <td>{{$controllers[$scheme->controller_id]}}</td>
-                                <td>{{$scheme->sensor}}</td>
+                                <td>{{$scheme->sensor->name}}</td>
                                 <td>
                                     <form action="" method="post"
                                           id="form">

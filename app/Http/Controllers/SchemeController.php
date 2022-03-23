@@ -15,10 +15,9 @@ class SchemeController extends Controller {
 
     public function index() {
         return view('admin.schemes.index', [
-            'schemes' => Scheme::all(),
+            'schemes' => Scheme::with('sensor')->get(),
             'controllers' => Micro::query()->pluck('name', 'id'),
             'sensors' => Sensor::all(),
-            'schemes' => Scheme::all(),
         ]);
     }
 
