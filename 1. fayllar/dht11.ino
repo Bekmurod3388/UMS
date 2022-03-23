@@ -7,19 +7,19 @@ dht DHT;
 int serial_port = 9600;
 
 void setup() {
-  Serial.begin(serial_port);
-  delay(500); // Delay to let system boot
-  Serial.println("DHT11 ishga tushdi (namlik, harorat)\n\n");
-  delay(1000); // Ishni boshlash uchun kutish vaqti
-}//end "setup()"
+    Serial.begin(serial_port);
+    delay(500); // Delay to let system boot
+    Serial.println("DHT11 ishga tushdi (namlik, harorat)\n\n");
+    delay(1000); // Ishni boshlash uchun kutish vaqti
+}
 
 void loop() {
-   // Dasturning ishchi qismi
+    // Dasturning ishchi qismi
 
     DHT.read11(dht_apin);
 
     // Sensor
-    Serial.print("{\"senosor_name\": DHT11");
+    Serial.print("{\"senosor_name\": \"DHT11\"");
     Serial.print(", ");
 
     // Parametres
