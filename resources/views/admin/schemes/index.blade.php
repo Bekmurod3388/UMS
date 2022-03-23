@@ -4,13 +4,13 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-9"><h1 class="card-title">Sxemalar</h1></div>
+                    <div class="col-9"><h1 class="card-title">Схемалар</h1></div>
                     <div class="col-md-1">
                         <button onclick="create()" class="btn btn-primary">
                             <span class="btn-label">
                                 <i class="fa fa-pen"></i>
                             </span>
-                            Qo&#8216;shish
+                            Кушиш
                         </button>
                     </div>
                 </div>
@@ -20,38 +20,34 @@
                         <thead>
                             <tr>
                                 <th>№</th>
-                                <th>Ism</th>
-                                <th>Familiyasi</th>
-                                <th>Email</th>
-                                <th>Amallar</th>
+                                <th>Микроконтроллер</th>
+                                <th>Сенсор</th>
+                                <th>Амаллар</th>
                             </tr>
                         </thead>
 
                         <tbody>
-{{--                        @foreach($users as $user)--}}
-{{--                            <tr>--}}
-{{--                                <td>{{$user->id}}</td>--}}
-{{--                                <td>{{$user->name}}</td>--}}
-{{--                                <td>{{$user->surname}}</td>--}}
-{{--                                <td>{{$user->email}}</td>--}}
-{{--                                <td>--}}
-{{--                                    <form action="{{route('admin.users.store')}}" method="post"--}}
-{{--                                          id="form_{{$user->id}}">--}}
-{{--                                        @method('DELETE')--}}
-{{--                                        @csrf--}}
-{{--                                        <button type="button"--}}
-{{--                                                onclick="update('{{route('admin.users.update', ['user' => $user])}}', '{{$user->name}}', '{{$user->surname}}', '{{$user->email}}')" class="btn btn-warning"--}}
-{{--                                                title="O&#8216;zgartirish"><i class="fas fa-pencil-alt"></i>--}}
-{{--                                        </button>--}}
+                        @dd($schemes)
+                        @foreach($schemes as $schema)
+                            <tr>
+                                <td>{{$schema->id}}</td>
+                                <td>{{$schema->controller}}</td>
+                                <td>{{$schema->sensor_id}}</td>
+                                <td>
+                                    <form action="{{route('admin.scheme.store')}}" method="post"
+                                          id="form_{{$schema->id}}">
+                                        @method('DELETE')
+                                        @csrf
+                                       <a href="#" class="btn btn-warning"><i class="fas fa-eye"></i></a>
 
-{{--                                        <button type="button" class="btn btn-danger disabled" onclick="remove(this.parentNode)"--}}
-{{--                                                title="O&#8216;chirish">--}}
-{{--                                            <i class="fas fa-trash-alt"></i>--}}
-{{--                                        </button>--}}
-{{--                                    </form>--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
+                                        <button type="button" class="btn btn-danger" onclick="remove(this.parentNode)"
+                                                title="Учириш">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -66,7 +62,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="surname">Kontrollerlar</label>
+                            <label for="surname">Контроллерлар</label>
                             <select name="controller_id" id="surname" class="form-control" required>
                                 @foreach($controllers as $controller)
                                     <option value="{{$controller->id}}">{{$controller->name}}</option>
@@ -74,7 +70,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="sensor_id">Sensorlar</label>
+                            <label for="sensor_id">Сенсорлар</label>
                             <select name="sensor_id" id="sensor_id" class="form-control" required>
                                 @foreach($sensors as $sensor)
                                     <option value="{{$sensor->id}}">{{$sensor->name}} ({{$sensor->type}}, )</option>
@@ -83,8 +79,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Saqlash</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Bekor qilish</button>
+                        <button type="submit" class="btn btn-primary">Саклаш</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Бекор килиш</button>
                     </div>
                 </div>
             </form>

@@ -18,6 +18,7 @@ class SchemeController extends Controller {
         return view('admin.schemes.index', [
             'controllers' => Micro::all(),
             'sensors' => Sensor::all(),
+            'schemes' => Scheme::all(),
         ]);
     }
     public function store(Request $request) {
