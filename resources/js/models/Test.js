@@ -12,3 +12,5 @@ TempHumidity.init({
     updatedAt: 'updated_at',
     tableName: 'temp_humidity'
 });
+
+module.exports = TempHumidity;

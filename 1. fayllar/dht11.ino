@@ -19,10 +19,10 @@ void loop() {
     DHT.read11(dht_apin);
 
     // Sensor
-    Serial.print("{\"senosor_name\": \"DHT11\"");
+    Serial.print("{\"sensor_name\": \"DHT11\"");
     Serial.print(", ");
 
-    // Parametres
+    // Parameters
     Serial.print("\"serial_port\": ");
     Serial.print(serial_port);
     Serial.print(", ");
