@@ -18,6 +18,7 @@ class SchemeController extends Controller {
             'schemes' => Scheme::all(),
             'controllers' => Micro::query()->pluck('name', 'id'),
             'sensors' => Sensor::all(),
+            'schemes' => Scheme::all(),
         ]);
     }
 
