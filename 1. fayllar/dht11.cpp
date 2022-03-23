@@ -23,7 +23,7 @@ void loop() {
     Serial.print(", ");
 
     // Parametres
-    Serial.print("{\"serial_port\": ");
+    Serial.print("\"serial_port\": ");
     Serial.print(serial_port);
     Serial.print(", ");
 
