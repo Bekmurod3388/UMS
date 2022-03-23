@@ -39,6 +39,12 @@
                                           id="form">
                                         @method('DELETE')
                                         @csrf
+                                        <a href="{{route('admin.reports')}}" class="btn btn-warning"><i class="fas fa-eye"></i></a>
+
+                                        <button type="button" class="btn btn-danger" onclick="remove(this.parentNode)"
+                                                title="Учириш">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>

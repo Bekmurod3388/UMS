@@ -2,7 +2,7 @@
     "development": {
         "username": "root",
         "password": "root",
-        "database": "laravel",
+        "database": "ums",
         "host": "127.0.0.1",
         "dialect": "mysql"
     },

@@ -26,7 +26,7 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('users', App\Http\Controllers\UserController::class);
     Route::resource('scheme', App\Http\Controllers\SchemeController::class);
     Route::resource('parameters', App\Http\Controllers\ParameterController::class);
-    Route::view('reports','admin.reports.index')->name('reports');
+    Route::get('reports',[\App\Http\Controllers\ReportController::class,'index'])->name('reports');
 });
 
 Route::get('/mqtt', [App\Http\Controllers\MQTTController::class, 'index']);
