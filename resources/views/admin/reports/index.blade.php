@@ -38,8 +38,9 @@
             <table class="table table-hover">
                 <tr>
                     <th>id</th>
-                    <th>Temperatura</th>
-                    <th>Namlik</th>
+                    <th>Температура</th>
+                    <th>Намлик</th>
+                    <th>Вакт</th>
                 </tr>
 
                 @foreach($reports as $report)
@@ -47,6 +48,7 @@
                     <td>{{$report->id}}</td>
                     <td>{{$report->temperature}}</td>
                     <td>{{$report->humidity}}</td>
+                    <td>{{$report->created_at}}</td>
                 </tr>
                 @endforeach
             </table>
@@ -61,12 +63,11 @@
     <script>
         var
             multipleLineChart = document.getElementById('multipleLineChart').getContext('2d');
-
-
+       var reports = @json($reports);
         var myMultipleLineChart = new Chart(multipleLineChart, {
             type: 'line',
             data: {
-                labels: ['22','23','24','25','26','27','28','29','30','31','32','33'],
+                labels: [12,14,15,16,16],
                 datasets: [{
                     label: "Namlik",
                     borderColor: "#1d7af3",
@@ -79,7 +80,7 @@
                     backgroundColor: 'transparent',
                     fill: true,
                     borderWidth: 2,
-                    data: [30, 45, 45, 68, 69, 90, 100, 158, 177, 200, 245, 256]
+                    data: [5,4,3,21,4],
                 },  {
                     label: "Harorat",
                     borderColor: "#f3545d",
@@ -92,7 +93,7 @@
                     backgroundColor: 'transparent',
                     fill: true,
                     borderWidth: 2,
-                    data: [10, 30, 58, 79, 90, 105, 117, 160, 185, 210, 185, 194]
+                    data: [1,2,3,4,5,6],
                 }]
             },
             options: {
