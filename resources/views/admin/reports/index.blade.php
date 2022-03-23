@@ -63,7 +63,7 @@
     <script>
         var
             multipleLineChart = document.getElementById('multipleLineChart').getContext('2d');
-       var reports = @json($reports);
+        var reports = @json($reports);
         var myMultipleLineChart = new Chart(multipleLineChart, {
             type: 'line',
             data: {
