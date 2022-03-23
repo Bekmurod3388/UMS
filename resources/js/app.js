@@ -14,7 +14,9 @@ client.on('message', function(topic, message) {
 
 async function save(data) {
     let {temperature, humidity} = data;
-    await TempHumidity.create({
+    let temp = new TempHumidity({
         temperature, humidity
     });
+
+    await temp.save();
 }
