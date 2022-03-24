@@ -64,10 +64,17 @@
         var
             multipleLineChart = document.getElementById('multipleLineChart').getContext('2d');
         var reports = @json($reports);
+        var created = [], humidity = [], temperature = [];
+        for(var i=0; i<reports.length; i++){
+            temperature[i] = reports[i].temperature;
+            humidity[i] = reports[i].humidity
+        }
+
         var myMultipleLineChart = new Chart(multipleLineChart, {
             type: 'line',
             data: {
-                labels: [12,14,15,16,16],
+                labels: reports.filter((e, i) => i > reports.length - 10)
+                    .map(item => new Date(item.created_at).getSeconds()),
                 datasets: [{
                     label: "Namlik",
                     borderColor: "#1d7af3",
@@ -80,7 +87,7 @@
                     backgroundColor: 'transparent',
                     fill: true,
                     borderWidth: 2,
-                    data: [5,4,3,21,4],
+                    data: humidity,
                 },  {
                     label: "Harorat",
                     borderColor: "#f3545d",
@@ -93,7 +100,7 @@
                     backgroundColor: 'transparent',
                     fill: true,
                     borderWidth: 2,
-                    data: [1,2,3,4,5,6],
+                    data: temperature,
                 }]
             },
             options: {

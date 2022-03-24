@@ -14,7 +14,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::all();
+        $reports = Report::orderBy('id',"DESC")->get();
         return view("admin.reports.index")->with("reports",$reports);
     }
 
