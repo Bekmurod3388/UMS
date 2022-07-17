@@ -18,7 +18,7 @@ Auth::routes([
     'reset' => false,
     'verify' => false
 ]);
-
+Route::view('/interface','admin.interface')->name('interface');
 Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('microcontrollers', App\Http\Controllers\MicroController::class);
@@ -27,6 +27,7 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('scheme', App\Http\Controllers\SchemeController::class);
     Route::resource('parameters', App\Http\Controllers\ParameterController::class);
     Route::get('reports',[\App\Http\Controllers\ReportController::class,'index'])->name('reports');
+    Route::get('dashboard',[\App\Http\Controllers\ReportController::class,'dashboard'])->name('dashboard');
 });
 
 Route::get('/mqtt', [App\Http\Controllers\MQTTController::class, 'index']);
