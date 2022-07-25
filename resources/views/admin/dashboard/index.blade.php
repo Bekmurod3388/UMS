@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-6"><iframe width="500" height="400" src="https://rtsp.me/embed/n4A9rGiK/" frameborder="0" allowfullscreen></iframe>
+                    <div class="col-6"><img src="http://172.20.23.44:8081" width="500px"  alt="">
                      </div>
                     <div class="col-6">
                         <div class="chart-container">

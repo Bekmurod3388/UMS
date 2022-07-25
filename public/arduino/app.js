@@ -8,7 +8,7 @@ const parser = new SerialPort.parsers.Readline({
     delimiter: '\r\n'
 });
 
-const port_name = "/dev/tty.usbmodem101"; //"COM4";
+const port_name = "/dev/tty.usbmodem1101"; //"COM4";
 const port = new SerialPort(port_name, {
     baudRate: 9600,
     dataBits: 8,
