@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Sensor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/insert_data', [\App\Http\Controllers\SchemeController::class, 'insert_data']);
 
-Route::post('/test', [\App\Http\Controllers\SensorController::class, 'store']);
+Route::post('/test', function (Request $request) {
+    $data = [
+        "name" => $request->get('name'),
+        'type' => "sadsad",
+        'description' => "sadsadsad"
+    ];
+    $sensor = new Sensor();
+    $sensor->fill($data);
+    $sensor->save();
+    return 1;
+});

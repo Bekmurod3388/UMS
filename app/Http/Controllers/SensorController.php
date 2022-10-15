@@ -18,11 +18,7 @@ class SensorController extends Controller {
     }
 
     public function store(SensorRequest $request) {
-        $data = [
-            "name" => $request->get('name'),
-            'type' => "sadsad",
-            'description' => "sadsadsad"
-        ]; // $request->validated();
+        $data = $request->validated();
         $sensor = new Sensor();
         $sensor->fill($data);
         $sensor->save();
