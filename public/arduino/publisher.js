@@ -8,13 +8,18 @@ const connectUrl = `mqtt://${host}:${port}`
 const client = mqtt.connect(connectUrl)
 
 const topic = 'node_topic'
-client.on('connect', () => {
-    setInterval(() => {
-        client.publish(topic, "Yana bir", { qos: 0, retain: false }, function(error) {
-            if (error)
-                console.error(error)
-        })
 
-        console.log("Ketdi")
-    }, 1000)
-})
+function send(data) {
+    client.publish(topic, data, { qos: 0, retain: false }, function(error) {
+    })
+    // client.on('connect', () => {
+//     setInterval(() => {
+//
+//         console.log("Ketdi")
+//     }, 1000)
+// })
+}
+
+module.exports = {
+    topic, send
+}

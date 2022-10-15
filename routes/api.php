@@ -19,3 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/insert_data', [\App\Http\Controllers\SchemeController::class, 'insert_data']);
+
+Route::post('/test', [\App\Http\Controllers\SensorController::class, 'store']);

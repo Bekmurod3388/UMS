@@ -9,14 +9,18 @@ client.on('connect', function() {
 
 client.on('message', function(topic, message) {
     let data = JSON.parse(message.toString());
-    save(data);
+    console.log(data)
+    save(data).then();
+
 });
 
 async function save(data) {
-    let {temperature, humidity} = data;
+    let {temperature, humidity, motion} = data;
     let temp = new TempHumidity({
         temperature, humidity
     });
 
-    await temp.save();
+    if (motion) {
+        await temp.save();
+    }
 }

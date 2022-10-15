@@ -3,8 +3,10 @@
     "version": "0.0.1",
     "description": "Communication between Arduino and HTML/JavaScript",
     "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.18.1",
         "mqtt": "^4.2.8",
         "serialport": "^9.0.1",
-        "socket.io": "^2.0.4"
+        "socket.io": "^4.5.1"
     }
 }

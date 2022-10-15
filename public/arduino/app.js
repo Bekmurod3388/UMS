@@ -1,6 +1,23 @@
 var SerialPort = require('serialport');
-var http = require('http');
+const publisher = require('../../public/arduino/publisher')
+const express = require('express')
+const app = express()
+const cors = require('cors')
+// app.use(cors())
+const http = require('http')
+const server = http.createServer(app)
+// const { Server } = require('socket.io')
+// const io = new Server(server)
+const io = require('socket.io')(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+})
+// app.use(cors())
+
 var fs = require('fs');
+var date;
 
 var index = fs.readFileSync('index.html');
 
@@ -18,23 +35,15 @@ const port = new SerialPort(port_name, {
 });
 port.pipe(parser);
 
-
-/* Client data send */
-let app = http.createServer(function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end(index);
-});
-
-/* FrontEnd side */
-const io = require('socket.io').listen(app);
-
 io.on('connection', function(socket) {
-    console.log('Socket ulandi');
-});
+    console.log("Ulandi");
+})
 
 parser.on('data', function(data) {
     console.log('Ko\'rsatkichlar: ' + data);
-    io.emit('msg', data);
+    date = JSON.stringify(data);
+    io.emit('data', data);
+    publisher.send(data)
 });
 
-// app.listen(5000);
+server.listen(3000);
